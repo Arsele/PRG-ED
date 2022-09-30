@@ -6,7 +6,7 @@
 int main(){
 
 int tamanho, i=0, j=0, moda;
-float media=0, mediana=0, soma=0, aux=0, conta=0, vmax, vmin, desvpad, smt, z=0.5;
+float media=0, mediana=0, soma=0, aux=0, conta=0, vmax, vmin, desvpad, smt;
 
 //pegando valores do usuario
 
@@ -16,14 +16,14 @@ scanf("%d", &tamanho);
 float cont[tamanho], v[tamanho];
 if(tamanho>0){
 
-	for(i=0;i<tamanho;i++){
+    for(i=0;i<tamanho;i++){
 
-	printf("digite o valor ? ");
-	scanf("%f", &v[i]);
+    printf("digite o valor ? ");
+    scanf("%f", &v[i]);
 
-	soma = soma + v[i];
+    soma = soma + v[i];
 
-	}
+    }
 }
 //media
 
@@ -36,9 +36,9 @@ printf("\nMedia: %2.2f \n", media);
 
 for(i=0;i<tamanho;i++){
         for(j=i+1;j<tamanho;j++){
-        	
+
             if(v[i] > v[j]){
-            	
+
                 aux = v[i];
                 v[i] = v[j];
                 v[j] = aux;
@@ -52,8 +52,8 @@ for(i=0;i<tamanho;i++){
     } else {
          mediana = v[tamanho/2];
     }
-    
-	
+
+
 printf("Mediana: %2.2f \n", mediana);
 
 //Valor Máximo
@@ -76,13 +76,10 @@ printf("Valor Mínimo: %2.2f \n", vmin);
 
 //Desvio Padrão
  for(i=0;i<tamanho;i++){
-     smt = smt + (v[i] - media)*(v[i] - media);
+     smt = smt + pow(v[i] - media,2);
     }
-printf("Desvio Padrão: %lf \n", smt);
 desvpad = smt/tamanho;
-printf("Desvio Padrão: %lf \n", desvpad);
-desvpad = desvpad ^ z;
-
+desvpad = sqrt(desvpad);
 printf("Desvio Padrão: %lf \n", desvpad);
 
 return 0;
